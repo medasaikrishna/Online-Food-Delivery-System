@@ -1,0 +1,106 @@
+<html>
+<head>
+
+    <style>
+        body{
+            background-color:skyblue;
+    
+        }
+    h1{
+        color: red;
+        font-family: sans-serif;
+    }
+    .btn1{
+    
+        
+        background-color: lightpink;
+        text-align: center;
+        display: inline;
+        border: none;
+        padding: 6px 32px;
+        border-radius: 15px;
+        margin-right: 70px;
+       
+    
+    }
+    .btn2{
+    
+        
+    background-color: lightpink;
+    text-align: center;
+    display: inline;
+    border: none;
+    border-radius: 15px;
+    padding: 6px 32px;
+    
+    }
+    #res{
+        padding-top: 35px;
+    }
+    #ccc{
+        padding-top: 30px;
+    }
+    </style>
+    
+
+</head>
+
+<body>
+
+    <center>
+
+    
+<h1>
+    Customer View
+</h1>
+    <div class="buttn">
+        <button onclick="menu()" class="btn1">View Menu</button>
+    
+
+        <button onclick="cart()" class="btn2">View Cart</button>
+    </div>
+  <div id="res"></div>
+  <div id="ccc"></div>
+</center>
+</body>
+
+<script>
+    var itemname= new Array("Samosa","Sandwitch","Pizza","Burger","Noodles","Fried Rice","Manchuria","French Fries","Frankie","Sweet Corn","Pepsi","Coke","Cool Cake","Ice Cream");
+    var itemcost= new Array(10,50,120,100,80,90,80,100,120,100,60,60,70,60);
+    var itemcat= new Array("Snacks","Starter","Snacks","Starter","Main Course","Main Course","Starter","Snacks","Snacks","Starter","Drinks","Drinks","Desert","Desert");
+    var itemdel= new Array("Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No","Yes","No");
+
+function menu()
+{
+
+	var tabledata="<table border=1><tr><th>Item Name</th><th>Item Cost</th><th>Item Category</th><th>Item Delivery</th><th>Item Action</th></tr>";
+	for(var i=0;i<13;i++)
+	{
+		tabledata+="<tr><td>"+itemname[i]+"</td><td>"+itemcost[i]+"</td><td>"+itemcat[i]+"</td><td>"+itemdel[i]+"</td><td><button onclick='cart("+i+")'>ADD TO CART</button></td></tr>";
+	}
+    	tabledata+="</table>";
+	document.getElementById("res").innerHTML=tabledata;
+    
+
+}
+var cartitems= new Array();
+    var cost=new Array();
+function cart(val)
+{
+    var c=0;
+    cartitems.push(itemname[val]);
+    cost.push(itemcost[val]);
+    var tabledata="<table border='1'><tr><th>ItemName</th><th>ItemCost</th></tr>";
+        for(var j=0;j<cost.length;j++)
+        {
+            c+=cost[j];
+            tabledata+="<tr><td>"+cartitems[j]+"</td><td>"+cost[j]+"</td></tr>";
+        }
+        alert("Total Cost ="+c);
+    tabledata+="</table>";
+    document.getElementById("ccc").innerHTML=tabledata;
+}
+
+</script>
+
+</html>
